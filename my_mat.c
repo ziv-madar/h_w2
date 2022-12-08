@@ -4,16 +4,7 @@
 
 float arr[N][N];
 
-void print_arr() {
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            printf("%f ", arr[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
-
+// sets all non-existing connections to infinity instead of 0
 void fix_matrix() {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
@@ -35,6 +26,7 @@ void floidwarshel() {
     }
 }
 
+// read matrix from standard input
 void A () {
     for (int cols = 0 ; cols < N ; cols++) {
         for (int row = 0; row < N; row++) {
@@ -45,11 +37,13 @@ void A () {
     floidwarshel();
 }
 
+// return true i fthere is a route fro i to j
 int B(int i, int j) {
     float res = arr[i][j];
     return (res < INFINITY && res > 0);
 }
 
+// return shortest distance from i to j
 int C(int i, int j) {
     return B(i,j) ? arr[i][j] : -1;
 }
